@@ -580,7 +580,7 @@ def main():
         # Photos - تم تعديل الايموجيات هنا 👇
         st.markdown("""
         <div class="photo-album">
-            <div class="photo-frame"><div class="photo-placeholder">👧🏾</div></div>  <!-- بنت شعر اسود -->
+            <div class="photo-frame"><div class="photo-placeholder">👧🏻</div></div>  <!-- بنت شعر اسود -->
             <div class="photo-frame"><div class="photo-placeholder">👦🏻</div></div>  <!-- ولد ابيض -->
             <div class="photo-frame"><div class="photo-placeholder">💜</div></div>
             <div class="photo-frame"><div class="photo-placeholder">🌹</div></div>
