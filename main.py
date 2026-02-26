@@ -28,6 +28,10 @@ if "love_count" not in st.session_state:
 if "gift_opened" not in st.session_state:
     st.session_state.gift_opened = False
 
+# ===== الرسالة الجديدة =====
+if "love_message" not in st.session_state:
+    st.session_state.love_message = """Lamis i love you so much and I'm very sorry to leave you and I promise it will not happen again ly soo much. Every second without you felt like an eternity of darkness, and it made me realize that you are the very air I breathe. My heart aches with the thought of causing you any pain, because you are my sanctuary and my greatest blessing. I want to cherish you, protect you, and adore you for the rest of my days. You are the melody in my heart and the soul in my body. Please feel the depth of my regret and the sincerity of my devotion. I am completely yours, now and forever, and I will spend every waking moment proving that my love for you is boundless, unbreakable, and deeper than the ocean itself. You are my everything, my queen, and my entire world."""
+
 # ===== Interactive Enhancements =====
 if "reaction_count" not in st.session_state:
     st.session_state.reaction_count = 0
@@ -345,7 +349,7 @@ st.markdown("""
         color: #666 !important;
     }
     
-    /* Photo Album */
+    /* Photo Album - تم تعديل الايموجيات هنا */
     .photo-album {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -388,69 +392,6 @@ st.markdown("""
     
     .signature div {
         color: #6a5acd !important;
-    }
-    
-    /* Neon Text Effect */
-    .neon-text {
-        color: #fff;
-        text-shadow: 
-            0 0 7px #fff,
-            0 0 10px #fff,
-            0 0 21px #fff,
-            0 0 42px #9370db,
-            0 0 82px #9370db,
-            0 0 92px #9370db,
-            0 0 102px #9370db,
-            0 0 151px #9370db;
-        animation: flicker 1.5s infinite alternate;
-    }
-    
-    @keyframes flicker {
-        0%, 18%, 22%, 25%, 53%, 57%, 100% {
-            text-shadow: 
-                0 0 4px #fff,
-                0 0 11px #fff,
-                0 0 19px #fff,
-                0 0 40px #9370db,
-                0 0 80px #9370db,
-                0 0 90px #9370db,
-                0 0 100px #9370db,
-                0 0 150px #9370db;
-        }
-        20%, 24%, 55% {        
-            text-shadow: none;
-        }
-    }
-    
-    /* Hover Card Effect */
-    .hover-card {
-        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    }
-    
-    .hover-card:hover {
-        transform: translateY(-10px) scale(1.02);
-        box-shadow: 0 30px 60px rgba(147, 112, 219, 0.3);
-    }
-    
-    /* Typing Effect */
-    .typing-effect {
-        overflow: hidden;
-        border-right: .15em solid #9370db;
-        white-space: nowrap;
-        margin: 0 auto;
-        animation: 
-            typing 3.5s steps(40, end),
-            blink-caret .75s step-end infinite;
-    }
-    
-    @keyframes typing {
-        from { width: 0; }
-        to { width: 100%; }
-    }
-    
-    @keyframes blink-caret {
-        from, to { border-color: transparent; }
-        50% { border-color: #9370db; }
     }
     
     /* Mobile Responsive */
@@ -636,11 +577,11 @@ def main():
     with st.container():
         st.markdown('<div class="card">', unsafe_allow_html=True)
         
-        # Photos
+        # Photos - تم تعديل الايموجيات هنا 👇
         st.markdown("""
         <div class="photo-album">
-            <div class="photo-frame"><div class="photo-placeholder">👧🏼</div></div>
-            <div class="photo-frame"><div class="photo-placeholder">👦🏿</div></div>
+            <div class="photo-frame"><div class="photo-placeholder">👧🏾</div></div>  <!-- بنت شعر اسود -->
+            <div class="photo-frame"><div class="photo-placeholder">👦🏻</div></div>  <!-- ولد ابيض -->
             <div class="photo-frame"><div class="photo-placeholder">💜</div></div>
             <div class="photo-frame"><div class="photo-placeholder">🌹</div></div>
         </div>
@@ -762,7 +703,7 @@ def main():
     col_left, col_right = st.columns(2)
     
     with col_left:
-        # Message Section
+        # Message Section - تم تحديث الرسالة هنا 👇
         st.markdown('<div class="card hover-card">', unsafe_allow_html=True)
         st.markdown("### 💌 Special Message")
         
@@ -772,19 +713,11 @@ def main():
                 add_reaction("message_opened")
         
         if st.session_state.show_message:
-            st.markdown("""
+            st.markdown(f"""
             <div class="message-box">
                 <h3 style="color: #6a5acd;">My Dearest Lamis,</h3>
                 <p style="font-size: 18px; line-height: 1.8;">
-                    Every moment with you feels like a beautiful dream. 
-                    Your smile lights up my world, and your presence makes 
-                    everything better. I thank Allah every day for bringing 
-                    you into my life.
-                </p>
-                <p style="font-size: 18px; line-height: 1.8;">
-                    You are the most beautiful part of my days, and the 
-                    sweetest thought in my nights. I love you more than 
-                    words can express.
+                    {st.session_state.love_message}
                 </p>
                 <div style="text-align: right; margin-top: 20px;">
                     <p style="font-size: 20px; font-weight: bold; color: #6a5acd;">
@@ -810,7 +743,7 @@ def main():
             """, unsafe_allow_html=True)
         st.markdown('</div>', unsafe_allow_html=True)
         
-        # Music Section
+        # Music Section - تم تحديث رابط الاغنية هنا 👇
         st.markdown('<div class="card hover-card">', unsafe_allow_html=True)
         st.markdown("### 🎵 Our Song")
         
@@ -830,11 +763,10 @@ def main():
             st.markdown("""
             <div class="music-box">
                 <div class="vinyl-record">🎵</div>
-                <h4 style="color: #6a5acd;">Now Playing: For You</h4>
+                <h4 style="color: #6a5acd;">Now Playing: حب اعمى</h4>
                 <p style="color: #666;">A melody of love...</p>
-                <iframe width="100%" height="80" scrolling="no" frameborder="no" 
-                    src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/322405170&color=%239370db&auto_play=true&hide_related=false&show_comments=false&show_user=false&show_reposts=false&show_teaser=false">
-                </iframe>
+                <!-- تم تحديث رابط الاغنية هنا -->
+                <iframe width="100%" height="315" src="https://www.youtube.com/embed/VkH3aMIWntw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
             """, unsafe_allow_html=True)
             
