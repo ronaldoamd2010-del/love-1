@@ -1,4 +1,3 @@
-ig@pl62, [26/02/2026 5:19 PM]
 import streamlit as st
 import datetime
 import random
@@ -127,9 +126,7 @@ st.markdown("""
         text-align: center;
         margin-bottom: 20px;
         text-shadow: 2px 2px 0 #e6e6fa;
-
-ig@pl62, [26/02/2026 5:19 PM]
-}
+    }
     
     /* Floating Hearts */
     .floating-heart {
@@ -282,9 +279,7 @@ ig@pl62, [26/02/2026 5:19 PM]
     /* Gift Box */
     .gift-box {
         background: linear-gradient(135deg, #9370db, #6a5acd);
-
-ig@pl62, [26/02/2026 5:19 PM]
-border-radius: 20px;
+        border-radius: 20px;
         padding: 30px;
         margin: 20px 0;
         text-align: center;
@@ -446,9 +441,7 @@ border-radius: 20px;
         animation: 
             typing 3.5s steps(40, end),
             blink-caret .75s step-end infinite;
-
-ig@pl62, [26/02/2026 5:19 PM]
-}
+    }
     
     @keyframes typing {
         from { width: 0; }
@@ -579,9 +572,7 @@ def main():
         padding: 15px;
         border-radius: 50px;
         text-align: center;
-
-ig@pl62, [26/02/2026 5:19 PM]
-margin: 10px 0 20px 0;
+        margin: 10px 0 20px 0;
         border: 2px solid #9370db;
     ">
         <h3 style="color: #6a5acd; margin: 0;">{get_time_of_day_greeting()}</h3>
@@ -679,9 +670,7 @@ margin: 10px 0 20px 0;
                     November 27, 2024 - the day you changed my life 💜
                 </p>
             </div>
-
-ig@pl62, [26/02/2026 5:19 PM]
-""", unsafe_allow_html=True)
+            """, unsafe_allow_html=True)
         
         with col_t2:
             days_until = time_until_birthday()
@@ -701,3 +690,376 @@ ig@pl62, [26/02/2026 5:19 PM]
                     <p style="color: #888; font-size: 14px; margin-top: 10px;">
                         Can't wait to celebrate you! 🎉
                     </p>
+                </div>
+                """, unsafe_allow_html=True)
+            else:
+                st.markdown("""
+                <div class="hover-card" style="
+                    background: linear-gradient(135deg, #ffd700, #9370db);
+                    padding: 20px;
+                    border-radius: 15px;
+                    text-align: center;
+                    border: 3px solid white;
+                    box-shadow: 0 5px 15px rgba(147,112,219,0.2);
+                ">
+                    <h4 style="color: white;">🎂 HAPPY BIRTHDAY LAMIS! 🎂</h4>
+                    <div style="font-size: 48px; font-weight: 900; color: white;">🎉</div>
+                    <p style="color: white; font-size: 18px;">
+                        Today is all about you, my queen!
+                    </p>
+                </div>
+                """, unsafe_allow_html=True)
+        
+        st.markdown("---")
+        
+        # Interactive Love Counter
+        col_l1, col_l2, col_l3 = st.columns([1, 2, 1])
+        with col_l2:
+            if st.button("💜 Click to Count My Love", key="love_btn"):
+                st.session_state.love_count += 1
+                add_reaction("love_click")
+                
+            st.markdown(f"""
+            <div style="
+                background: white;
+                padding: 20px;
+                border-radius: 15px;
+                text-align: center;
+                margin: 10px 0;
+                border: 2px solid #9370db;
+            ">
+                <h3 style="color: #6a5acd; margin: 0;">I Love You</h3>
+                <div style="font-size: 72px; font-weight: 900; color: #9370db; line-height: 1;">
+                    {st.session_state.love_count}
+                </div>
+                <p style="color: #666;">times</p>
+                <p style="color: #888; font-size: 14px;">
+                    And I'll keep counting forever...
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            if st.session_state.love_count > 0 and st.session_state.love_count % 10 == 0:
+                st.balloons()
+                st.markdown(f"""
+                <div style="
+                    background: linear-gradient(135deg, #9370db, #6a5acd);
+                    padding: 10px;
+                    border-radius: 50px;
+                    text-align: center;
+                    margin: 10px 0;
+                    border: 2px solid white;
+                ">
+                    <p style="color: white; font-size: 18px; margin: 0;">
+                        🎉 {st.session_state.love_count} times! You're amazing! 🎉
+                    </p>
+                </div>
+                """, unsafe_allow_html=True)
+        
+        st.markdown("</div>", unsafe_allow_html=True)  # Close card
+    
+    # Two Column Layout for Main Content
+    col_left, col_right = st.columns(2)
+    
+    with col_left:
+        # Message Section
+        st.markdown('<div class="card hover-card">', unsafe_allow_html=True)
+        st.markdown("### 💌 Special Message")
+        
+        if st.button("📩 Open Message", key="msg_btn"):
+            st.session_state.show_message = not st.session_state.show_message
+            if st.session_state.show_message:
+                add_reaction("message_opened")
+        
+        if st.session_state.show_message:
+            st.markdown("""
+            <div class="message-box">
+                <h3 style="color: #6a5acd;">My Dearest Lamis,</h3>
+                <p style="font-size: 18px; line-height: 1.8;">
+                    Every moment with you feels like a beautiful dream. 
+                    Your smile lights up my world, and your presence makes 
+                    everything better. I thank Allah every day for bringing 
+                    you into my life.
+                </p>
+                <p style="font-size: 18px; line-height: 1.8;">
+                    You are the most beautiful part of my days, and the 
+                    sweetest thought in my nights. I love you more than 
+                    words can express.
+                </p>
+                <div style="text-align: right; margin-top: 20px;">
+                    <p style="font-size: 20px; font-weight: bold; color: #6a5acd;">
+                        Forever Yours,<br>
+                        Your Love ❤️
+                    </p>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            # Typing effect demo
+            st.markdown("""
+            <div class="typing-effect" style="
+                background: #f0e6ff;
+                padding: 15px;
+                border-radius: 15px;
+                margin-top: 20px;
+                font-size: 18px;
+                color: #6a5acd;
+            ">
+                💭 Thinking of you... always...
+            </div>
+            """, unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
+        
+        # Music Section
+        st.markdown('<div class="card hover-card">', unsafe_allow_html=True)
+        st.markdown("### 🎵 Our Song")
+        
+        col_m1, col_m2 = st.columns(2)
+        
+        with col_m1:
+            if st.button("🎵 Play Our Song", key="play_music"):
+                st.session_state.music_playing = not st.session_state.music_playing
+                add_reaction("music_played")
+        
+        with col_m2:
+            if st.button("🎶 Next Song", key="next_song"):
+                st.session_state.music_playing = True
+                add_reaction("song_changed")
+        
+        if st.session_state.music_playing:
+            st.markdown("""
+            <div class="music-box">
+                <div class="vinyl-record">🎵</div>
+                <h4 style="color: #6a5acd;">Now Playing: For You</h4>
+                <p style="color: #666;">A melody of love...</p>
+                <iframe width="100%" height="80" scrolling="no" frameborder="no" 
+                    src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/322405170&color=%239370db&auto_play=true&hide_related=false&show_comments=false&show_user=false&show_reposts=false&show_teaser=false">
+                </iframe>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            # Visualizer effect
+            bars = "▁▂▃▄▅▆▇█▇▆▅▄▃▂▁"
+            st.markdown(f"""
+            <div style="
+                background: #9370db20;
+                padding: 10px;
+                border-radius: 10px;
+                text-align: center;
+                font-size: 24px;
+                color: #9370db;
+                letter-spacing: 5px;
+            ">
+                {bars}
+            </div>
+            """, unsafe_allow_html=True)
+        else:
+            st.markdown("""
+            <div style="
+                background: #f0e6ff;
+                padding: 20px;
+                border-radius: 15px;
+                text-align: center;
+                border: 2px dashed #9370db;
+            ">
+                <p style="color: #6a5acd; font-size: 24px; margin: 0;">
+                    🎼 Press play for our melody
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
+    
+    with col_right:
+        # Promise Section
+        st.markdown('<div class="card hover-card">', unsafe_allow_html=True)
+        st.markdown("### 💝 My Promise to You")
+        
+        if st.button("🤲 Read My Promise", key="promise_btn"):
+            st.session_state.show_promise = not st.session_state.show_promise
+            if st.session_state.show_promise:
+                add_reaction("promise_read")
+        
+        if st.session_state.show_promise:
+            st.markdown("""
+            <div class="promise-box">
+                <h3 style="color: white;">I Promise To:</h3>
+                <p style="font-size: 20px; color: white;">✨ Always make you smile</p>
+                <p style="font-size: 20px; color: white;">✨ Protect your heart</p>
+                <p style="font-size: 20px; color: white;">✨ Be there whenever you need me</p>
+                <p style="font-size: 20px; color: white;">✨ Love you more each day</p>
+                <p style="font-size: 20px; color: white;">✨ Respect and cherish you</p>
+                <p style="font-size: 20px; color: white;">✨ Make you feel special always</p>
+                <div style="margin-top: 20px; text-align: center;">
+                    <p style="color: #9370db; font-size: 24px;">💜 Forever and always 💜</p>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
+        
+        # Gift Box Section
+        st.markdown('<div class="card hover-card">', unsafe_allow_html=True)
+        st.markdown("### 🎁 Special Gift")
+        
+        if not st.session_state.gift_opened:
+            if st.button("🎀 Open Your Gift", key="gift_btn"):
+                st.session_state.gift_opened = True
+                add_reaction("gift_opened")
+                st.balloons()
+        else:
+            st.markdown("""
+            <div class="gift-box" onclick="this.classList.toggle('open')">
+                <h3>🎉 SURPRISE! 🎉</h3>
+            </div>
+            <div class="gift-content">
+                <h4 style="color: #6a5acd; text-align: center;">For Lamis, my queen 👑</h4>
+                <p style="font-size: 18px; text-align: center;">
+                    You are the greatest gift in my life. 
+                    Every day with you is a treasure I'll forever cherish.
+                </p>
+                <div style="display: flex; justify-content: center; gap: 10px; margin: 20px 0;">
+                    <span style="font-size: 30px;">💝</span>
+                    <span style="font-size: 30px;">💖</span>
+                    <span style="font-size: 30px;">💗</span>
+                </div>
+                <p style="text-align: center; font-style: italic; color: #666;">
+                    "You are the one my soul loves" - Song of Solomon 3:4
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
+    
+    # Full Width Interactive Section
+    st.markdown('<div class="card">', unsafe_allow_html=True)
+    
+    # Love Meter
+    st.markdown("### 📊 Love Meter")
+    
+    love_level = min(st.session_state.love_count * 2, 100)
+    
+    st.markdown(f"""
+    <div style="
+        background: white;
+        padding: 20px;
+        border-radius: 20px;
+        margin: 20px 0;
+        border: 2px solid #9370db;
+    ">
+        <div style="
+            height: 30px;
+            background: #f0e6ff;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        ">
+            <div style="
+                width: {love_level}%;
+                height: 100%;
+                background: linear-gradient(90deg, #9370db, #6a5acd);
+                border-radius: 15px;
+                transition: width 0.5s ease;
+            "></div>
+        </div>
+        <p style="text-align: center; color: #666;">
+            Love Level: {love_level}%
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Interactive Hearts Grid
+    st.markdown("### 💜 Heart Wall")
+    st.markdown("*Click the hearts to send love*")
+    
+    heart_cols = st.columns(5)
+    heart_emojis = ["💜", "💖", "💝", "💗", "💓"]
+    
+    for idx, col in enumerate(heart_cols):
+        with col:
+            if st.button(heart_emojis[idx % len(heart_emojis)], key=f"heart_wall_{idx}"):
+                st.session_state.love_count += 1
+                add_reaction("heart_wall")
+                st.toast(f"❤️ Love sent! Total: {st.session_state.love_count}")
+    
+    # Reaction History
+    if st.session_state.last_reaction:
+        st.markdown("---")
+        st.markdown("### 📝 Recent Activity")
+        st.markdown(f"""
+        <div style="
+            background: linear-gradient(135deg, #f0e6ff, #e6d5ff);
+            padding: 15px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid #9370db;
+        ">
+            <p style="color: #6a5acd; margin: 0;">
+                Last interaction: {st.session_state.last_reaction['type']} 
+                at {st.session_state.last_reaction['time']}
+                (Total: {st.session_state.reaction_count} interactions)
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    st.markdown('</div>', unsafe_allow_html=True)
+    
+    # Signature
+    st.markdown("""
+    <div class="signature">
+        <div>Made with 💜 for Lamis</div>
+        <div style="font-size: 16px; color: #888; margin-top: 10px;">
+            Every line of code is a line of love
+        </div>
+        <div style="font-size: 14px; color: #aaa; margin-top: 5px;">
+            Updated: Dubai Time {current_time}
+        </div>
+    </div>
+    """.format(current_time=get_dubai_time().strftime("%I:%M %p")), unsafe_allow_html=True)
+    
+    # Sidebar Stats
+    with st.sidebar:
+        st.markdown("""
+        <div style="
+            background: linear-gradient(135deg, #9370db, #6a5acd);
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+            color: white;
+        ">
+            <h3 style="color: white;">💜 Love Stats</h3>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        st.markdown(f"**Heart Clicks:** {st.session_state.heart_click}")
+        st.markdown(f"**Love Counts:** {st.session_state.love_count}")
+        st.markdown(f"**Interactions:** {st.session_state.reaction_count}")
+        st.markdown(f"**Messages Opened:** {'✅' if st.session_state.show_message else '❌'}")
+        st.markdown(f"**Gift Opened:** {'✅' if st.session_state.gift_opened else '❌'}")
+        st.markdown(f"**Music Playing:** {'✅' if st.session_state.music_playing else '❌'}")
+        
+        st.markdown("---")
+        st.markdown("### 💭 Quick Love Note")
+        if st.button("💌 Generate Love Note"):
+            note = random.choice([
+                "You're beautiful",
+                "I miss you",
+                "You're my queen",
+                "Thinking of you",
+                "You're amazing",
+                "My heart is yours"
+            ])
+            st.info(note)
+        
+        st.markdown("---")
+        st.markdown("### 🌙 Dubai Time")
+        st.markdown(f"**{get_dubai_time().strftime('%I:%M %p')}**")
+        st.markdown(f"**{get_dubai_time().strftime('%B %d, %Y')}**")
+        
+        if st.button("🔄 Refresh Time"):
+            st.rerun()
+        
+        if st.button("🎈 Celebrate"):
+            st.balloons()
+            add_reaction("celebration")
+
+# ===== Run the App =====
+if __name__ == "__main__":
+    main()
